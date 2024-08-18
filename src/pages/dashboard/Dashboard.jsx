@@ -66,14 +66,14 @@ function Dashboard() {
     <div className="_dashboardControlsContainer">
       <h3>Set Values for Banner</h3>
       <form className="_controlForm" onSubmit={saveData}>
-        Show Banner? ON
+        Show Banner? OFF
         <Switch
           checked={checked}
           onChange={handleChange}
           inputProps={{ "aria-label": "controlled" }}
           name="showBanner"
         />{" "}
-        OFF
+        ON
         <br />
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DateTimePicker
