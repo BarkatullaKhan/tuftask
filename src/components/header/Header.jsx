@@ -9,7 +9,7 @@ function Header() {
             <Link to="/">Home</Link>
           </li>
           <li className="list__item">
-            <Link to="/dashboard">Control</Link>
+            <Link to="/dashboard">Controls</Link>
           </li>
         </ul>
       </div>
