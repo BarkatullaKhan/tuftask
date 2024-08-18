@@ -1,4 +1,4 @@
-// import banner from './images/banner.jpg'
+
 
 import { Link } from "react-router-dom";
 import "./Banner.css";
@@ -39,15 +39,10 @@ function Banner() {
               alt="Banner"
               className="_bannerImage"
             />
-            {/* <div className="_imageContainer">
-        
-      </div> */}
             <div className="_bannerTexts">
               <h3>{data[0]?.description}</h3>
-              {/* <p></p> */}
 
               <div>
-                {/* <h1>Countdown Timer</h1> */}
                 <Countdown date={targetDate} renderer={renderer} />
               </div>
             </div>

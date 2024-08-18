@@ -1,16 +1,14 @@
-// import DateTimePicker from "../../components/datepicket/DateTimePicker";
+
 import dayjs from "dayjs";
-import { MobileDateTimePicker } from "@mui/x-date-pickers/MobileDateTimePicker";
 import "./Dashboard.css";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { renderTimeViewClock } from "@mui/x-date-pickers/timeViewRenderers";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import Switch from "@mui/material/Switch";
-import useSWR from "swr";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
@@ -39,7 +37,7 @@ function Dashboard() {
   const [checked, setChecked] = useState(
     isLoading === true
       ? false
-      : isError == true
+      : isError === true
       ? false
       : data[0]?.showBanner === 1
       ? true
@@ -73,8 +71,6 @@ function Dashboard() {
         OFF
         <br />
         <LocalizationProvider dateAdapter={AdapterDayjs}>
-          {/* <label htmlFor="">Select the time</label> */}
-          {/* <h2>Select time</h2> */}
           <DateTimePicker
             label="Banner visible till "
             name="endTime"
@@ -85,7 +81,6 @@ function Dashboard() {
               seconds: renderTimeViewClock,
             }}
           />
-          {/* <MobileDateTimePicker defaultValue={dayjs(Date.now())} /> */}
         </LocalizationProvider>
         <br />
         <TextField
@@ -94,7 +89,6 @@ function Dashboard() {
           name="bannerDescription"
           variant="outlined"
           multiline
-          //   rows={4}
           defaultValue={data[0]?.description}
         />
         <br />
@@ -103,7 +97,6 @@ function Dashboard() {
           label="Banner Link"
           variant="outlined"
           name="link"
-          // multiline
           defaultValue={data[0]?.link}
         />
         <br />
