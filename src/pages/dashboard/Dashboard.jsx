@@ -1,4 +1,3 @@
-
 import dayjs from "dayjs";
 import "./Dashboard.css";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
@@ -9,6 +8,7 @@ import Switch from "@mui/material/Switch";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
@@ -17,8 +17,7 @@ import useBanner from "../../fetcher";
 function Dashboard() {
   // const [bannerData, setBannerData] = useState([]);
   const { data, isLoading, isError } = useBanner();
-  console.log(data);
-  
+  const navigate = useNavigate();
 
   const saveData = (event) => {
     event.preventDefault();
@@ -34,6 +33,11 @@ function Dashboard() {
         showBanner: event.target.showBanner.checked,
         link: event.target.link.value,
       }),
+    }).then((res) => {
+      console.log(res);
+      if (res.status === 200) {
+        navigate("/")
+      }
     });
   };
   const [checked, setChecked] = useState(
@@ -60,7 +64,6 @@ function Dashboard() {
   }
   return (
     <div className="_dashboardControlsContainer">
-    
       <h3>Set Values for Banner</h3>
       <form className="_controlForm" onSubmit={saveData}>
         Show Banner? ON
