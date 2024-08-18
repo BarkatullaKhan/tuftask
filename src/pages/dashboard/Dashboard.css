@@ -1,0 +1,31 @@
+
+body{
+    background-color: rgb(247 198 0 / 39%);
+}
+._dashboardControlsContainer{
+    width: 60%;
+    padding: 30px;
+    margin: 0 auto;
+
+}
+
+._controlForm{
+    /* display: flex; */
+    justify-content: space-between;
+}
+
+
+
+
+/* #outlined-multiline-static{
+
+width: 300px;
+
+} */
+
+.MuiFormControl-root{
+    width: 300px;
+}
+.MuiSwitch-root,.MuiFormControl-root,._buttonContainer{
+    margin: 10px !important;
+}
