@@ -8,6 +8,12 @@ import Box from "@mui/material/Box";
 
 function Banner() {
   const { data, isLoading, isError } = useBanner();
+  const handleCountDownStart = () => {
+    document.getElementById("showBanner").style.display="block"
+    document.getElementById(
+      "hideBanner"
+    ).style.display="none"
+  };
   const handleCountdownCompletes = () => {
     document.getElementById("showBanner").style.display="none"
     document.getElementById(
@@ -48,6 +54,7 @@ function Banner() {
 
                 <div>
                   <Countdown
+                  onStart={handleCountDownStart}
                     onComplete={handleCountdownCompletes}
                     date={targetDate}
                     renderer={renderer}
