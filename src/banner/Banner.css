@@ -15,3 +15,10 @@
   left: 63%;
   transform: translate(-50%, -63%);
 }
+
+.showBanner {
+  display: block;
+}
+.hideBanner {
+  display: none;
+}

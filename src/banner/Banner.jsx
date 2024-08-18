@@ -9,8 +9,10 @@ import Box from "@mui/material/Box";
 function Banner() {
   const { data, isLoading, isError } = useBanner();
   const handleCountdownCompletes = () => {
-    document.getElementById("banner").innerHTML =
-      "<h2 style={{margin: '20px'}}>Offer ended</h2>";
+    document.getElementById("showBanner").style.display="none"
+    document.getElementById(
+      "hideBanner"
+    ).style.display="block"
   };
   if (isLoading) {
     return (
@@ -32,30 +34,35 @@ function Banner() {
   );
   return (
     <div id="banner">
-      {data[0]?.showBanner ? (
-        <Link to={data[0]?.link}>
-          <div className="_bannerContainer">
-            <img
-              src={"/images/banner.jpg"}
-              alt="Banner"
-              className="_bannerImage"
-            />
-            <div className="_bannerTexts">
-              <h3>{data[0]?.description}</h3>
+      <div id="showBanner">
+        {data[0]?.showBanner ? (
+          <Link to={data[0]?.link}>
+            <div className="_bannerContainer">
+              <img
+                src={"/images/banner.jpg"}
+                alt="Banner"
+                className="_bannerImage"
+              />
+              <div className="_bannerTexts">
+                <h3>{data[0]?.description}</h3>
 
-              <div>
-                <Countdown
-                  onComplete={handleCountdownCompletes}
-                  date={targetDate}
-                  renderer={renderer}
-                />
+                <div>
+                  <Countdown
+                    onComplete={handleCountdownCompletes}
+                    date={targetDate}
+                    renderer={renderer}
+                  />
+                </div>
               </div>
             </div>
-          </div>
-        </Link>
-      ) : (
-        <h3>You have opted for not to show banner</h3>
-      )}
+          </Link>
+        ) : (
+          <h3>You have opted for not to show banner</h3>
+        )}
+      </div>
+      <div id="hideBanner">
+        <h2 style={{ textAlign: "center" }}>Offer Ended.</h2>
+      </div>
     </div>
   );
 }
