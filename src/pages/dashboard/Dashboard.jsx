@@ -17,6 +17,8 @@ import useBanner from "../../fetcher";
 function Dashboard() {
   // const [bannerData, setBannerData] = useState([]);
   const { data, isLoading, isError } = useBanner();
+  console.log(data);
+  
 
   const saveData = (event) => {
     event.preventDefault();

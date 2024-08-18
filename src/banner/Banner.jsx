@@ -1,5 +1,3 @@
-
-
 import { Link } from "react-router-dom";
 import "./Banner.css";
 import Countdown from "react-countdown";
@@ -10,6 +8,10 @@ import Box from "@mui/material/Box";
 
 function Banner() {
   const { data, isLoading, isError } = useBanner();
+  const handleCountdownCompletes = () => {
+    document.getElementById("banner").innerHTML =
+      "<h2 style={{margin: '20px'}}>Offer ended</h2>";
+  };
   if (isLoading) {
     return (
       <Box sx={{ display: "flex" }}>
@@ -20,8 +22,7 @@ function Banner() {
   if (isError) {
     return <div>Error while loading</div>;
   }
-  const targetDate =
-    data?.length > 0 ? new Date(data[0].showTill) : new Date(Date().now());
+  const targetDate = data?.length > 0 ? new Date(data[0].showTill) : Date.now();
   const renderer = ({ days, hours, minutes, seconds }) => (
     <div>
       <p>
@@ -30,7 +31,7 @@ function Banner() {
     </div>
   );
   return (
-    <div>
+    <div id="banner">
       {data[0]?.showBanner ? (
         <Link to={data[0]?.link}>
           <div className="_bannerContainer">
@@ -43,7 +44,11 @@ function Banner() {
               <h3>{data[0]?.description}</h3>
 
               <div>
-                <Countdown date={targetDate} renderer={renderer} />
+                <Countdown
+                  onComplete={handleCountdownCompletes}
+                  date={targetDate}
+                  renderer={renderer}
+                />
               </div>
             </div>
           </div>
